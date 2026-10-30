@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    /* header di bagian atas halaman */
+    #header {
+      background-color: blue;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    /* konten dibuat tinggi supaya bisa di-scroll (total lebih dari 2000px) */
+    .konten {
+      height: 500px;
+      padding: 20px;
+      border-bottom: 1px solid gray;
+    }
+
+    /* tombol back to top */
+    #tombol {
+      position: fixed;       /* menempel di layar */
+      right: 20px;           /* kanan */
+      bottom: 20px;          /* bawah */
+      width: 50px;
+      height: 50px;
+      font-size: 25px;
+      border: none;
+      border-radius: 50%;
+      background-color: orange;
+      color: white;
+      cursor: pointer;
+      display: none;         /* awalnya hidden */
+      opacity: 0.6;          /* agar tidak menganggu konten */
+    }
+
+    /* saat mouse diarahkan ke tombol */
+    #tombol:hover {
+      opacity: 1;            /* menjadi 100% */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header">
+    <h1>Top Page Header</h1>
+    <p>Scroll ke bawah untuk melihat tombol</p>
+  </div>
+
+  <div class="konten"><h2>Bagian 1</h2></div>
+  <div class="konten"><h2>Bagian 2</h2></div>
+  <div class="konten"><h2>Bagian 3</h2></div>
+  <div class="konten"><h2>Bagian 4</h2></div>
+  <div class="konten"><h2>Bagian 5</h2></div>
+
+  <!-- tombol panah ke atas -->
+  <button id="tombol" onclick="keAtas()">&#8593;</button>
+
+  <script>
+    var tombol = document.getElementById("tombol");
+
+    // dijalankan setiap halaman di-scroll
+    window.onscroll = function() {
+      if (window.scrollY > 500) {
+        tombol.style.display = "block";   // tampilkan
+      } else {
+        tombol.style.display = "none";    // sembunyikan
+      }
+    };
+
+    // dijalankan saat tombol diklik
+    function keAtas() {
+      window.scrollTo(0, 0);   // kembali ke posisi paling atas
+    }
+  </script>
+
+</body>
+</html>
